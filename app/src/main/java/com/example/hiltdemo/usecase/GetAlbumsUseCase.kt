@@ -28,5 +28,5 @@ class GetAlbumsUseCaseImpl @Inject constructor(private val albumRepository: Albu
 @InstallIn(ActivityComponent::class)
 abstract class GetAlbumsModule {
     @Binds
-    abstract suspend fun bindGetAlbumsUseCase(getAlbumsUseCaseImpl: GetAlbumsUseCaseImpl): GetAlbumsUseCase
+    abstract fun bindGetAlbumsUseCase(getAlbumsUseCaseImpl: GetAlbumsUseCaseImpl): GetAlbumsUseCase
 }
