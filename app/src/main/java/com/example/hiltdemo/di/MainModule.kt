@@ -1,16 +1,16 @@
 package com.example.hiltdemo.di
 
 import com.example.hiltdemo.api.AlbumApi
-import com.example.hiltdemo.presentation.MainActivity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.components.ActivityRetainedComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(ActivityRetainedComponent::class)
 object MainModule {
 
     @Provides
@@ -21,7 +21,11 @@ object MainModule {
 
     @Provides
     fun provideRetrofitInstance(): Retrofit =
-        Retrofit.Builder().baseUrl(provideBaseUrl()).client(provideOkHttpBuilder()).build()
+        Retrofit
+            .Builder()
+            .baseUrl(provideBaseUrl())
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(provideOkHttpBuilder()).build()
 
     @Provides
     fun provideAlbumApi(retrofit: Retrofit): AlbumApi = retrofit.create(AlbumApi::class.java)

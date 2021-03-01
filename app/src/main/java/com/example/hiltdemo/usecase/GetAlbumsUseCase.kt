@@ -2,10 +2,6 @@ package com.example.hiltdemo.usecase
 
 import com.example.hiltdemo.data.Album
 import com.example.hiltdemo.repository.AlbumRepository
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import javax.inject.Inject
 
 interface GetAlbumsUseCase {
@@ -22,11 +18,4 @@ class GetAlbumsUseCaseImpl @Inject constructor(private val albumRepository: Albu
             throw Throwable(message = result.message())
         }
     }
-}
-
-@Module
-@InstallIn(ActivityComponent::class)
-abstract class GetAlbumsModule {
-    @Binds
-    abstract fun bindGetAlbumsUseCase(getAlbumsUseCaseImpl: GetAlbumsUseCaseImpl): GetAlbumsUseCase
 }
