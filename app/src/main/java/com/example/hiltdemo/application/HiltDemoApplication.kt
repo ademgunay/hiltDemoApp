@@ -3,6 +3,6 @@ package com.example.hiltdemo.application
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
-//Step 4: Add annotation to your application class
+// Add annotation to setup Hilt for this application
 @HiltAndroidApp
 class HiltDemoApplication: Application()
