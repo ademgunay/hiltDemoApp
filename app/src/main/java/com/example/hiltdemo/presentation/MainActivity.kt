@@ -28,11 +28,15 @@ class MainActivity : AppCompatActivity() {
 
         mainRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = albumAdapter //TODO replace by postAdapter
+            adapter = postAdapter //TODO replace by postAdapter
         }
 
         mainViewModel.albumList.observe(this) {
             albumAdapter.submitList(it)
+        }
+
+        mainViewModel.postList.observe(this) {
+            postAdapter.submitList(it)
         }
 
         mainViewModel.errorMsg.observe(this) { message ->
@@ -43,6 +47,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        mainViewModel.fetchAlbums()
+        mainViewModel.fetchPosts()
     }
 }
