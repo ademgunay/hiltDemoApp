@@ -1,7 +1,7 @@
 package com.example.hiltdemo.usecase
 
 import com.example.hiltdemo.data.AlbumEntity
-import com.example.hiltdemo.repository.AlbumRepository
+import com.example.hiltdemo.repository.RemoteRepository
 import javax.inject.Inject
 
 interface GetAlbumsUseCase {
@@ -9,10 +9,10 @@ interface GetAlbumsUseCase {
 }
 
 // Annotate with @Inject to get dependencies from Hilt generated code
-class GetAlbumsUseCaseImpl @Inject constructor(private val albumRepository: AlbumRepository) : GetAlbumsUseCase {
+class GetAlbumsUseCaseImpl @Inject constructor(private val remoteRepository: RemoteRepository) : GetAlbumsUseCase {
 
     override suspend fun invoke(): List<AlbumEntity> {
-        val result = albumRepository.getAlbums()
+        val result = remoteRepository.getAlbums()
         if (result.isSuccessful) {
             return result.body() ?: emptyList()
         } else {

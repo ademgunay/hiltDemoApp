@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
     private val albumAdapter: AlbumAdapter by lazy {
         AlbumAdapter()
     }
+    private val postAdapter: PostAdapter by lazy {
+        PostAdapter()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         mainRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = albumAdapter
+            adapter = albumAdapter //TODO replace by postAdapter
         }
 
         mainViewModel.albumList.observe(this) {

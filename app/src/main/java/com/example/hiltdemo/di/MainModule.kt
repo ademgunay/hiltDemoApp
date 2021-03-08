@@ -1,6 +1,6 @@
 package com.example.hiltdemo.di
 
-import com.example.hiltdemo.api.AlbumApi
+import com.example.hiltdemo.api.RetrofitApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object MainModule {
 
     @Provides
-    fun provideBaseUrl() = "https://jsonplaceholder.typicode.com/"
+    fun provideBaseUrl() = "https://jsonplaceholder.typicode.com"
 
     @Provides
     fun provideOkHttpBuilder(): OkHttpClient = OkHttpClient.Builder().build()
@@ -28,5 +28,5 @@ object MainModule {
             .client(provideOkHttpBuilder()).build()
 
     @Provides
-    fun provideAlbumApi(retrofit: Retrofit): AlbumApi = retrofit.create(AlbumApi::class.java)
+    fun provideAlbumApi(retrofit: Retrofit): RetrofitApi = retrofit.create(RetrofitApi::class.java)
 }

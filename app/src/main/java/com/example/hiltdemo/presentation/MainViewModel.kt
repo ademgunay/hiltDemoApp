@@ -24,4 +24,9 @@ class MainViewModel @Inject constructor(private val getAlbumsUseCase: GetAlbumsU
             }
         }
     }
+
+    //TODO fetch posts and replace recyclerview's albumAdapter by postAdapter
+    fun fetchPosts() {
+
+    }
 }
