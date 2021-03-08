@@ -28,5 +28,5 @@ object MainModule {
             .client(provideOkHttpBuilder()).build()
 
     @Provides
-    fun provideAlbumApi(retrofit: Retrofit): RetrofitApi = retrofit.create(RetrofitApi::class.java)
+    fun provideRetrofitApi(retrofit: Retrofit): RetrofitApi = retrofit.create(RetrofitApi::class.java)
 }
